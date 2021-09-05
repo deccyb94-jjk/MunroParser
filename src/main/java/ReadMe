@@ -1,0 +1,60 @@
+Munro CSV Reader -
+
+I have looked to create a program that matches the brief assigned out.
+
+Unfortunately, due to being away from the java development space for over a year in my current workplace I did strugggle with some aspects of the coding tasks.
+
+-- The application can Filter by Munro/Munro Top
+-- The application can sort ascending or descending on Name or Height (M)
+-- The application can accept a search by minimum Height (M)
+-- The application can accept a search by maximum Height (M)
+-- The application can limit these above results to the top 10
+-- The application does only return Name, Height (M), Hill Category (Taken from post1997 attribute) and Grid Reference.
+
+Unfortunately the application does not accept combinations of the above. I would probably be able to implement this in someway but I'm sure there is a much easier way to do so that I'm not
+aware of with Spring/Restful API frameworks that I'm not aware of.
+
+The application runs from the Main class and creates an instance of UserInterface.
+
+From there, the terminal will prompt the user what to enter and will return results based on the input entered.
+
+
+
+Class Munro:
+ - Java Class for an Object of "Munro".
+ - Contains all getters/setters.
+ - Contains CSVBindByValue for use of opencsv library.
+
+
+
+Class Main:
+ - Class where the program initiates from.
+ - main method creates instance of UserInterface.
+
+
+
+Class UserInterface:
+ - I realise that the brief mentions to create an API that other software can use but I have unfortunately been away from Java
+   development for over a year at my current workplace so I tried to develop something that could be operated from user input via
+   the terminal.
+ - UserInterface displays a list of options to the user and reads the user input from the terminal to navigate and display results
+   based on the selected options.
+
+
+
+Class DataController:
+ - This class contains the main methods that are called by UserInterface depending on what the user inputs.
+
+
+
+What I used:
+ - Used opencsv library to read CSV file due to opencsv being able to interpret/handle the links/other symbols within the records inside
+
+ - Using a standard buffered reader and separating by "," was working for the first few records until I realised that some of the links
+   in the file contain commas mid link (the "" surrounded links) therefore, I moved to using opencsv
+
+ - opencsv worked for returning results based on min/max heights but CsvToBean appears to be difficult to re-order based on alphabetical/
+   numeric asc/desc for name and height, so in the methods for re-organising the list of results I moved wrote the csvToBean to an ArrayList
+   and used a sort on that to return the results in the correct orders.
+
+
